@@ -1,9 +1,7 @@
-FROM docker.io/fedora:23
-RUN dnf update -y \
-    && dnf install -y python-devel python-pip gcc libffi-devel \
-    redhat-rpm-config openssl-devel libxml2-devel libxslt-devel \
-    && dnf clean all
-RUN pip install --upgrade pip
+FROM python:3.6.5
 RUN pip install scrapyd
-CMD sh -c /usr/bin/scrapyd -n
+RUN mkdir -p /etc/scrapyd/ &&\
+    echo '[scrapyd]' | tee -a /etc/scrapyd/scrapyd.conf && \
+    echo 'bind_address=0.0.0.0' | tee -a /etc/scrapyd/scrapyd.conf
+CMD /usr/local/bin/scrapyd -n
 EXPOSE 6800
