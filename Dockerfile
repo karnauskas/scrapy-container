@@ -1,4 +1,4 @@
-FROM python:3.8-alpine
+FROM python:3.10.5-alpine
 ADD requirements.txt /tmp/requirements.txt
 RUN pip install -r /tmp/requirements.txt
 RUN mkdir -p /etc/scrapyd/ &&\
