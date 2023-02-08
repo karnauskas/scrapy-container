@@ -1,1 +1,1 @@
-scrapyd==1.3.0
+scrapyd==1.4.0
